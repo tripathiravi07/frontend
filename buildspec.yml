@@ -7,7 +7,7 @@ phases:
 
   build:
     commands:
-       - aws s3 cp build s3://varun.feekyeyewear.com
+       - aws s3 cp index.html s3://varun.feekyeyewear.com
        - echo Build completed on `date`
        - aws cloudfront create-invalidation --distribution-id E39MMO71X6Q5YP --paths '/*'
        
