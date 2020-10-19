@@ -1,9 +1,4 @@
 version: 0.2
-env:
-  parameter-store:
-    S3_BUCKET: "FRONTEND_DEV_CODEPIPELINE_S3_BUCKET"
-    CDN_ID: "FRONTEND_DEV_CODEPIPELINE_CDN_ID"
-
 phases:
 
   pre_build:
@@ -12,9 +7,9 @@ phases:
 
   build:
     commands:
-       - aws s3 cp index.html s3://${S3_BUCKET}
+       - aws s3 cp build s3://varun.feekyeyewear.com
        - echo Build completed on `date`
-       - aws cloudfront create-invalidation --distribution-id ${CDN_ID} --paths '/*'
+       - aws cloudfront create-invalidation --distribution-id E39MMO71X6Q5YP --paths '/*'
        
 artifacts:
   files:
