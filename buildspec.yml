@@ -1,11 +1,5 @@
 version: 0.2
-phases:
-
-env:
-  parameter-store:
-    S3_BUCKET: "FRONTEND_DEV_CODEPIPELINE_S3_BUCKET"
-    CDN_ID: "FRONTEND_DEV_CODEPIPELINE_CDN_ID"
-    
+phases:    
   pre_build:
     commands:
       echo "Entering Into PreBuild Phas"
