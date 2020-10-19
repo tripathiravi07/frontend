@@ -1,15 +1,20 @@
 version: 0.2
 phases:
 
+env:
+  parameter-store:
+    S3_BUCKET: "FRONTEND_DEV_CODEPIPELINE_S3_BUCKET"
+    CDN_ID: "FRONTEND_DEV_CODEPIPELINE_CDN_ID"
+    
   pre_build:
     commands:
       echo "Entering Into PreBuild Phas"
 
   build:
     commands:
-       - aws s3 cp index.html s3://varunsandhey.feekyeyewear.com
+       - aws s3 cp index.html s3://${S3_BUCKET}
        - echo Build completed on `date`
-       - aws cloudfront create-invalidation --distribution-id E2WPUV59SGO8G8 --paths '/*'
+       - aws cloudfront create-invalidation --distribution-id ${CDN_ID} --paths '/*'
        
 artifacts:
   files:
